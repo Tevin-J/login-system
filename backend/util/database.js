@@ -1,12 +1,12 @@
 import * as mysql from 'mysql2';
-import dotenv from 'dotenv';
-dotenv.config();
+import { getEnv } from '../helper/environment.js';
+
 const config = {
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: getEnv('DB_HOST'),
+  port: getEnv('DB_PORT'),
+  user: getEnv('DB_USERNAME'),
+  password: getEnv('DB_PASSWORD'),
+  database: getEnv('DB_NAME'),
 };
 
-export const pool = mysql.createConnection(config).promise();
+export const pool = mysql.createPool(config).promise();

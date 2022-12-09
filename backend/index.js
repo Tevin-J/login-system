@@ -2,9 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { router as authRoutes } from './routes/auth.js';
 import * as errorController from './controllers/error.js';
+import { getEnv } from './helper/environment.js';
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = parseInt(getEnv('PORT'), 10) || 3000;
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');

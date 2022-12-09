@@ -8,6 +8,7 @@ export class User {
   }
 
   static save(user) {
+    console.log('\ninsert user', user.email);
     return db.execute(
       `
       INSERT INTO users(name, email, password)
@@ -18,7 +19,7 @@ export class User {
   }
 
   static find(email) {
-    console.log('find', email);
+    console.log('\nfind user', email);
     return db.execute(
       `
         SELECT * FROM users
