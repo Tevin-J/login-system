@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs';
 import { User } from '../models/user.js';
 
 export async function signup(req, res, next) {
+  console.log('signup req body', req.body);
   const errorInfo = validationResult(req);
   if (!errorInfo.isEmpty()) {
     const error = new Error(errorInfo.errors[0].msg);
