@@ -11,9 +11,9 @@ export class User {
     console.log('\ninsert user', user.email);
     return db.execute(
       `
-      INSERT INTO users(name, email, password)
-      VALUES(?, ?, ?)
-    `,
+        INSERT INTO users(name, email, password)
+        VALUES(?, ?, ?)
+      `,
       [user.name, user.email, user.password]
     );
   }
