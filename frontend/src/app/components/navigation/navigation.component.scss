@@ -1,14 +1,21 @@
 mat-toolbar {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 64px;
+  display: grid;
+  grid-template-areas: "first second";
+  grid-template-columns: 15vw 15vw;
+  column-gap: 60vw;
+  padding: 0 5vw;
+  .first {
+    grid-area: first;
+  }
+  .second {
+    grid-area: second;
+    display: flex;
+    justify-content: space-between;
+  }
   a {
     text-decoration: none;
     &.active-link {
       color: white;
-    }
-    span {
-      margin-left: 24px;
     }
   }
 }

@@ -23,8 +23,9 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   signup(): void {
-    this.authService
-      .signup(this.form.value)
-      .subscribe((message) => console.log('signup response', message));
+    this.authService.signup(this.form.value).subscribe((message) => {
+      console.log('signup response', message);
+      this.form.reset();
+    });
   }
 }

@@ -19,10 +19,11 @@ export class AuthService {
 
   signup(user: Omit<User, 'id'>): Observable<User> {
     console.log(`signup user ${user.email}`);
-    return this.http.post<User>(this.url, user, this.httpOptions).pipe(
-      first(),
-      tap((res) => console.log(res)),
-      catchError(this.errorHandlerService.handleError<User>('signup'))
-    );
+    return this.http
+      .post<User>(this.url, user, this.httpOptions)
+      .pipe(
+        first(),
+        catchError(this.errorHandlerService.handleError<User>('signup'))
+      );
   }
 }
