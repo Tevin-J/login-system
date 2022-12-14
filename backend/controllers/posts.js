@@ -3,6 +3,15 @@ import { validationResult } from 'express-validator';
 
 export async function fetchAll(req, res, next) {
   console.log('[fetchAll]');
+  try {
+    const [posts] = await Post.fetchAll();
+    res.status(200).send(posts);
+  } catch (e) {
+    if (!e.statusCode) {
+      e.statusCode = 500;
+    }
+    next(e);
+  }
 }
 
 export async function createPost(req, res, next) {
@@ -34,4 +43,13 @@ export async function createPost(req, res, next) {
 
 export async function deletePost(req, res, next) {
   console.log('[deletePost]');
+  try {
+    const deleteResponse = await Post.delete(req.params.id);
+    res.status(200).json(deleteResponse);
+  } catch (e) {
+    if (!e.statusCode) {
+      e.statusCode = 500;
+    }
+    next(e);
+  }
 }
