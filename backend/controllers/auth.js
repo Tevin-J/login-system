@@ -13,9 +13,7 @@ export async function signup(req, res, next) {
     next(error);
     return;
   }
-  const name = req.body.name;
-  const email = req.body.email;
-  const password = req.body.password;
+  const { name, email, password } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
