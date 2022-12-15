@@ -1,4 +1,8 @@
+<button mat-raised-button (click)="isOpen = !isOpen" color="accent">
+  <mat-icon>add</mat-icon>Create Post
+</button>
 <form
+  *ngIf="isOpen"
   [formGroup]="form"
   #formDirective="ngForm"
   (submit)="createPost(form.value)"

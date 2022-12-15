@@ -5,13 +5,33 @@
     </a>
   </span>
   <span class="second">
-    <a routerLink="/posts" routerLinkActive="active-link">
+    <a
+      *ngIf="isAuthenticated"
+      routerLink="/posts"
+      routerLinkActive="active-link"
+    >
       <span>Posts</span>
     </a>
-    <a routerLink="/login" routerLinkActive="active-link">
+    <a
+      *ngIf="!isAuthenticated"
+      routerLink="/login"
+      routerLinkActive="active-link"
+    >
       <span>Login</span>
     </a>
-    <a routerLink="/signup" routerLinkActive="active-link">
+    <a
+      *ngIf="isAuthenticated"
+      routerLink="/login"
+      routerLinkActive="active-link"
+      (click)="logout()"
+    >
+      <span>Logout</span>
+    </a>
+    <a
+      *ngIf="!isAuthenticated"
+      routerLink="/signup"
+      routerLinkActive="active-link"
+    >
       <span>Signup</span>
     </a>
   </span>

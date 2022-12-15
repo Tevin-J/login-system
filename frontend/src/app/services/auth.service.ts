@@ -15,7 +15,7 @@ export class AuthService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
   isUserLoggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  userId!: Pick<User, 'id'>;
+  userId!: number;
 
   constructor(
     private http: HttpClient,
