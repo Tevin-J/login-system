@@ -1,0 +1,23 @@
+<form
+  [formGroup]="form"
+  #formDirective="ngForm"
+  (submit)="createPost(form.value)"
+  novalidate
+>
+  <mat-form-field>
+    <mat-label>Post Title</mat-label>
+    <input matInput formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Post Body</mat-label>
+    <input matInput formControlName="body" />
+  </mat-form-field>
+  <button
+    mat-raised-button
+    [disabled]="form.invalid"
+    color="accent"
+    type="submit"
+  >
+    Post
+  </button>
+</form>

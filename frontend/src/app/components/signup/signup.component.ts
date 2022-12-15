@@ -10,7 +10,13 @@ import { AuthService } from 'src/app/services/auth.service';
 export class SignupComponent implements OnInit {
   form: FormGroup;
   constructor(private authService: AuthService) {
-    this.form = new FormGroup({
+    this.form = this.createFormGroup();
+  }
+
+  ngOnInit(): void {}
+
+  createFormGroup(): FormGroup {
+    return new FormGroup({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -19,8 +25,6 @@ export class SignupComponent implements OnInit {
       ]),
     });
   }
-
-  ngOnInit(): void {}
 
   signup(): void {
     this.authService.signup(this.form.value).subscribe((message) => {
